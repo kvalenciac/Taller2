@@ -45,11 +45,11 @@ class Controller extends BaseController
         $totalImages = (count(Controller::$images));
         $randomNumber = (rand(0,($totalImages-1)));
         $randomImage = Controller::$images[$randomNumber];
-        //return response()->json([$randomImage]);
+        //return response()->json("https://taller2bucket.s3.amazonaws.com/Meme15.jpg");
 
         if(Storage::exists($randomImage))
         {
-            return Storage::disk('s3')->get($randomImage);
+            return Storage::disk('s3')->get("https://taller2bucket.s3.amazonaws.com/Meme15.jpg");
         }else
         {
             return 'No Image';
