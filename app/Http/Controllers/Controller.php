@@ -42,9 +42,17 @@ class Controller extends BaseController
 
     public function randomimage()
     {
-        $totalImages = (count(Controller::$images));
-        $randomNumber = (rand(0,($totalImages-1)));
-        $randomImage = Controller::$images[$randomNumber];
-        return response()->json([$randomImage]);
+        //$totalImages = (count(Controller::$images));
+        //$randomNumber = (rand(0,($totalImages-1)));
+        //$randomImage = Controller::$images[$randomNumber];
+        //return response()->json([$randomImage]);
+
+        if(Storage::exists($randomImage))
+        {
+            return Storage::disk('s3')->get($randomImage);
+        }else
+        {
+            return 'No Image';
+        }
     }
 }
