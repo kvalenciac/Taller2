@@ -45,6 +45,6 @@ class Controller extends BaseController
         $totalImages = (count(Controller::$images));
         $randomNumber = (rand(0,($totalImages-1)));
         $randomImage = Controller::$images[$randomNumber];
-        return response()->json(['image' => $randomImage]);
+        return response()->json([$randomImage]);
     }
 }
